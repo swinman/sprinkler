@@ -1,4 +1,5 @@
 from gpiozero import LED, Button
+from RPi import GPIO
 from time import sleep
 
 # 3.3v		5V
@@ -9,8 +10,8 @@ from time import sleep
 # gpio17	gpio18
 
 
-red = LED(17)	  # 6th pin (5th from top) on left
-button = Button(2) # second from top on left
+#red = LED(17)	  # 6th pin (5th from top) on left
+#button = Button(2) # second from top on left
 
 
 while False: #True:

@@ -8,10 +8,8 @@ try:
 except:
     gpiozero = None
 
-if gpiozero is not None:
-    button = Button(2)
-    red_led = LED(17)
-
+button = gpiozero.Button(2) if gpiozero is not None else None
+red_led = gpiozero.LED(17) if gpiozero is not None else None
 
 # App config.
 DEBUG = True
