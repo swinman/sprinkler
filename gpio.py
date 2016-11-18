@@ -13,7 +13,7 @@ red = LED(17)	  # 6th pin (5th from top) on left
 button = Button(2) # second from top on left
 
 
-while True:
+while False: #True:
     red.on()
     sleep(1)
     red.off()
