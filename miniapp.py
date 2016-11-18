@@ -1,15 +1,23 @@
 import logging
 from flask import Flask, render_template, flash, request
 from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
+import gpio
+
+# Usage:
+# find ifconfig IP address and enter in address bar with tailing :5000
+# export FLASK_APP=miniapp.py
+# flask run --host=0.0.0.0
+
 
 log = logging.getLogger(__name__)
 try:
     import gpiozero
 except:
     gpiozero = None
+    gpio.config()
 
-button = gpiozero.Button(2) if gpiozero is not None else None
-red_led = gpiozero.LED(17) if gpiozero is not None else None
+#button = gpiozero.Button(2) if gpiozero is not None else None
+#red_led = gpiozero.LED(17) if gpiozero is not None else None
 
 # App config.
 DEBUG = True
@@ -36,7 +44,7 @@ def hello():
                 flash('Hello ' + name)
             else:
                 flash("Hello {}, the button is {}".format(name,
-                    "pressed" if button.is_pressed else "released"))
+                    "pressed" if gpio.get_pin() else "released"))
         else:
             flash('All the form fields are required. ')
 
