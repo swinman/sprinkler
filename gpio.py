@@ -19,12 +19,12 @@ log = logging.getLogger(__name__)
 def config():
     subprocess.call('./config_gpio.sh')
 
-def get_pin():
-    txt = subprocess.check_output(['gpio', 'read', '8'])
+def get_pin(pin):
+    txt = subprocess.check_output(['gpio', '-g', 'read', str(pin)])
     return int(txt)
 
-def set_pin(high=True):
-    subprocess.call(['gpio', 'write', '0', '1' if high else '0'])
+def set_pin(pin, high=True):
+    subprocess.call(['gpio', '-g', 'write', str(pin), '1' if high else '0'])
 
 while False: #True:
     red.on()
@@ -36,3 +36,10 @@ while False: #True:
         print('Button is pressed')
     else:
         print('Button not pressed')
+
+if __name__ == "__main__":
+    import time
+    zone1, zone2, zone3, zone4 = 6, 13, 19, 26
+    tm_wdays = set(range(7))
+
+    times

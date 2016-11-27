@@ -44,7 +44,7 @@ def hello():
                 flash('Hello ' + name)
             else:
                 flash("Hello {}, the button is {}".format(name,
-                    "pressed" if gpio.get_pin() else "released"))
+                    "pressed" if gpio.get_pin(0) else "released"))
         else:
             flash('All the form fields are required. ')
 
